@@ -14,21 +14,9 @@ export default function Navbar() {
           <Link href="/about" className="inline-block w-auto float-left text-lg mt-4 lg:inline-block lg:mt-1 md:text-md lg:text-md text-black hover:underline decoration-tspg-yellow decoration-4 mr-4">
             About
           </Link>
-          <div className="group relative">
-            <h1 className="inline-block w-auto float-left mt-4 text-lg lg:inline-block lg:mt-1 md:text-md lg:text-md text-black hover:underline decoration-tspg-yellow decoration-4 mr-4">
-              Ideas
-            </h1>
-            <div
-              className="invisible absolute z-50 flex w-auto flex-col bg-white border border-tspg-gray py-1 px-4 text-gray-800 shadow-xl group-hover:visible left-[6.5rem] top-[2rem]"
-            >
-              <Link href="/ideas" className="hover:underline decoration-tspg-yellow decoration-4">
-                Ideas
-              </Link>
-              <Link href="/ideas/ideas-generator" className="hover:underline decoration-tspg-yellow decoration-4">
-                Idea Generator
-              </Link>
-            </div>
-          </div>
+          <Link href="/ideas" className="inline-block w-auto float-left mt-4 text-lg lg:inline-block lg:mt-1 md:text-md lg:text-md text-black hover:underline decoration-tspg-yellow decoration-4 mr-4">
+            Ideas
+          </Link>
           <Link href="/blog" className="inline-block w-auto float-left mt-4 text-lg lg:inline-block lg:mt-1 md:text-md lg:text-md text-black hover:underline decoration-tspg-yellow decoration-4 mr-4">
             Blog
           </Link>
