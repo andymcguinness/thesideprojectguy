@@ -111,7 +111,7 @@ export default function IdeaGenerator() {
         <h1 className="mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-block z-10 text-center">Ideas Generator</h1>
 
         <p className="text-base text-gray-700 md:text-lg inline-block mb-4 text-left">
-          If you need an idea and my mostly-baked <Link href="/ideas" className="inline-block">Ideas</Link> page didn't do it for you, here's a random idea generator! It uses AI, so it will take a brief moment to load, but maybe it will give you the spark you need!
+          If you need an idea and my mostly-baked ideas didn't do it for you, here's a random idea generator! It uses AI, so it will take a brief moment to load, but maybe it will give you the spark you need!
         </p>
         <button onClick={generateWords} className="inline-block items-center justify-center w-auto h-12 px-6 font-semibold tracking-wide text-black transition duration-200 shadow-sm bg-tspg-yellow hover:brightness-90 focus:shadow-outline focus:outline-none" disabled={loading}>{result == '' ? 'Generate an idea' : 'Generate another idea'}</button>
 
