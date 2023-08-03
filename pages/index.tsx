@@ -1,16 +1,14 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Header } from './components/Header'
+import { Hero } from './components/Hero'
+import Navbar from './components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main className="w-full bg-gray-400">
-        
-      </main>
-    </>
+    <div className="min-h-screen bg-tspg-gray">
+      <Navbar />
+      <Hero />
+    </div>
   )
 }
