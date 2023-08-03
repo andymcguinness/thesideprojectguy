@@ -19,7 +19,7 @@ export default function About() {
             I want everyone to have great, fulfilling side projects like mine -- so I've set out to help folks do just that! This website contains tips, tricks, and ideas for your next side project! If you're really stuck, check out my <Link href="/ideas" className="font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4">Ideas</Link> page -- there I list out the ideas I've had recently that I may or may not get time to work on. Feel free to take one or many of those ideas!
             <br />
             <br />
-            You can also check out my <Link href="/idea-generator" className="font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4">Idea Generator</Link> page for random ideas!
+            You can also check out my <Link href="/ideas-generator" className="font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4">Idea Generator</Link> page for random ideas!
             <br />
             <br />
             Thanks for stopping by, and take care!
