@@ -17,7 +17,8 @@ export interface Post {
         "value": StructuredTextDocument
     };
     "image": {
-        "url": string
+        "url": string;
+        'blurHash': string;
     };
     "subtitle": string;
     "tags": [ Tag ];
@@ -28,7 +29,8 @@ export interface Post {
 export interface Author {
     "name": string;
     "image": {
-        "url": string
+        "url": string;
+        "blurHash": string;
     };
     "excerpt": {
         "value": StructuredTextDocument
@@ -44,4 +46,5 @@ export interface Category {
 export interface Tag {
     "name": string;
     "slug": string;
+    "id": number;
 }

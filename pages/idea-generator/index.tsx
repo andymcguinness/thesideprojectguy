@@ -1,5 +1,5 @@
 import Navbar from '../../components/Navbar'
-import IdeaFilter from '../../components/IdeaFilter'
+import IdeaGenerator from '../../components/IdeaGenerator'
 
 export default function Ideas() {
   return (
@@ -7,7 +7,7 @@ export default function Ideas() {
       <Navbar />
       <div className='pt-10 flex bg-tspg-gray pb-5 h-full w-full'>
         <main className="w-full items-center">
-          <IdeaFilter />
+          <IdeaGenerator />
         </main>
       </div>
     </div>

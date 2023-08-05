@@ -1,7 +1,7 @@
 import { request } from '@/lib/datocms';
 
 import { Category, Posts } from '../PostTypes';
-import ExcerptComponent from '../ExcerptComponent';
+import ExcerptComponent from '../../../components/ExcerptComponent';
 
 export async function getStaticPaths() {
   // Query

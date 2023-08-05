@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'tspg-yellow': '#fbdb5b',
-        'tspg-gray': '#d9d9d9',
+        'tspg-yellow': '#F5CB5C',
+        'tspg-gray': '#333533',
+        'tspg-white': '#ECEDEB',
       },
     }
   },

@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Disclosure, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
-import Navbar from '../components/Navbar'
+import Navbar from './Navbar'
 import { generateSlug } from 'random-word-slugs'
 import Link from 'next/link'
 
@@ -105,17 +105,16 @@ export default function IdeaGenerator() {
   }
 
   return (
-    <section>
-      <div className="relative mt-5 pt-5">
+    <section className="p-6 bg-[#333533] dark:text-gray-100">
+      <div className="container grid gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-5">
+        <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-900 bg-[#ECEDEB]">
+          <h1 className="mb-6 font-sans text-5xl font-bold tracking-tight text-tspg-gray sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-block z-10 text-left">Ideas Generator</h1>
 
-        <h1 className="mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-block z-10 text-center">Ideas Generator</h1>
+          <p className="text-base text-tspg-gray md:text-lg text-sm text-left mb-6">{result == '' && loading == true ? 'Loading...' : (result != '' ? result : '')}</p>
 
-        <p className="text-base text-gray-700 md:text-lg inline-block mb-4 text-left">
-          If you need an idea and my mostly-baked ideas didn't do it for you, here's a random idea generator! It uses AI, so it will take a brief moment to load, but maybe it will give you the spark you need!
-        </p>
-        <button onClick={generateWords} className="inline-block items-center justify-center w-auto h-12 px-6 font-semibold tracking-wide text-black transition duration-200 shadow-sm bg-tspg-yellow hover:brightness-90 focus:shadow-outline focus:outline-none" disabled={loading}>{result == '' ? 'Generate an idea' : 'Generate another idea'}</button>
-
-        <p className="mt-5 text-base text-gray-700 md:text-lg px-4 py-2 text-sm border border-tspg-gray text-left">{result == '' && loading == true ? 'Loading...' : (result != '' ? result : 'Brilliant idea goes here.')}</p>
+          <button onClick={generateWords} className="inline-block items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-tspg-gray transition duration-200 shadow-sm bg-tspg-yellow hover:brightness-90 focus:shadow-outline focus:outline-none rounded-md mt-2" disabled={loading}>{result == '' ? 'Generate an idea' : 'Generate another idea'}</button>
+        </div>
+        <img src="/idea_generator.jpg" alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" />
       </div>
     </section>
   )
