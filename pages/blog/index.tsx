@@ -11,7 +11,7 @@ export async function getStaticProps({ preview = false }) {
             name
             image {
               url
-              blurHash
+              blurUpThumb
             }
           }
           body {
@@ -20,18 +20,20 @@ export async function getStaticProps({ preview = false }) {
           categories {
             name
             slug
+            id
           }
           excerpt {
             value
           }
           image {
             url
-            blurHash
+            blurUpThumb
           }
           subtitle
           tags {
             name
             slug
+            id
           }
           title
           slug
@@ -53,10 +55,10 @@ export async function getStaticProps({ preview = false }) {
 export default function BlogHome({ posts }: { posts: Posts }) {
 
   return (
-    <div className="bg-tspg-gray min-h-screen">
+    <div className="bg-tspg-white min-h-screen">
       <Navbar />
-      <main className="pt-10 flex bg-tspg-gray pb-5 h-full w-full">
-        <div className="bg-tspg-white px-4 py-10 w-full mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10 shadow-2xl rounded-md">
+      <main className="flex bg-tspg-white pb-5 h-full w-full grid xl:grid-cols-5">
+        <div className="bg-tspg-white px-4 py-10 w-full mx-auto xl:col-span-3 xl:col-start-2">
           <h1 className="sm:max-w-xs mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">Blog</h1>
           
           <div className="grid grid-col-1 gap-x-2 gap-y-2">

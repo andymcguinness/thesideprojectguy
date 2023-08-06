@@ -4,7 +4,9 @@ import Navbar from '@/components/Navbar';
 
 import { Post } from './PostTypes';
 import { StructuredText } from 'react-datocms';
-import Link from 'next/link';
+import Image from 'next/image';
+
+import styles from '../../styles/BlogPost.module.css'
 
 export async function getStaticPaths() {
   // Query
@@ -14,6 +16,7 @@ export async function getStaticPaths() {
         name
         image {
           url
+          blurUpThumb
         }
       }
       body {
@@ -28,6 +31,7 @@ export async function getStaticPaths() {
       }
       image {
         url
+        blurUpThumb
       }
       subtitle
       tags {
@@ -61,6 +65,7 @@ export async function getStaticProps({ params }: { params: any }) {
       author {
         image {
           url
+          blurUpThumb
         }
         name
         excerpt {
@@ -79,6 +84,7 @@ export async function getStaticProps({ params }: { params: any }) {
       }
       image {
         url
+        blurUpThumb
       }
       slug
       subtitle
@@ -105,16 +111,47 @@ export async function getStaticProps({ params }: { params: any }) {
 }
 
 export default function PostPage({ post }: { post: Post }) {
+
   return (
-    <div className="bg-tspg-gray min-h-screen">
+
+    <div className="bg-tspg-white min-h-screen">
       <Navbar />
-      <main className="pt-10 flex bg-tspg-gray pb-5 h-full w-full">
-        <div className="bg-tspg-white rounded-md px-4 py-10 w-full mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10 shadow-2xl">
-          <h1 className="sm:max-w-xs mb-2 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">{post.title}</h1>
-          <h2 className="text-base mb-4">{post.subtitle}</h2>
+      <main className="flex bg-tspg-white pb-5 h-full w-full grid xl:grid-cols-5">
+        <div className="bg-tspg-white px-4 py-10 w-full mx-auto xl:col-span-3 xl:col-start-2 relative flex flex-col">
+          <div className="block">
+            <h1 className="mb-2 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-block">{post.title}</h1>
+            <h2 className="text-base text-xl inline-block w-full">{post.subtitle}</h2>
+          </div>
 
-          <StructuredText data={post.body} />
+          <div className="flex flex-row gap-x-6 mt-4 mb-4">
+            <Image src={post.author.image.url} width={75} height={75} className="rounded-md col-span-1" alt="The author's picture" placeholder='blur' blurDataURL={post.author.image.blurUpThumb} />
+            <div className="flex flex-col col-span-7">
+              <p className="text-base mb-1 text-md font-semibold">{post.author.name}</p>
+              <StructuredText data={post.author.excerpt} />
+            </div>
+          </div>
 
+          <Image src={post.image.url} height={600} width={900} placeholder="blur" blurDataURL={post.image.blurUpThumb} alt={''} className="self-center rounded-md" />
+
+          <div className={styles.blog_post_content}>
+            <StructuredText data={post.body} />
+          </div>
+
+          <div className="categories">
+            <p>Categories: 
+            {post.categories.map((category) => (
+              <a href={`/blog/category/${category.slug}`} key={category.id} className="ml-1 font-semibold decoration-4 decoration-tspg-yellow hover:underline">{category.name}</a>
+            ))}
+            </p>
+          </div>
+
+          <div className="tags">
+            <p>Tags: 
+            {post.tags.map((tag) => (
+              <a href={`/blog/tag/${tag.slug}`} key={tag.id} className="ml-1 font-semibold decoration-4 decoration-tspg-yellow hover:underline">{tag.name}</a>
+            ))}
+            </p>
+          </div>
         </div>
       </main>
     </div>

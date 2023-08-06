@@ -1,0 +1,38 @@
+.blog_post_content {
+    margin-top: 2rem;
+}
+
+.blog_post_content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.blog_post_content ul {
+    list-style-type: disc;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.blog_post_content p {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.blog_post_content a {
+    font-weight: 600;
+    font-size: 1.35rem;
+}
+.blog_post_content a:hover {
+    text-decoration: underline;
+    text-decoration-color: #F5CB5C;
+    text-decoration-thickness: 4px;
+}
+
+.blog_post_content hr {
+    border-width: 1px;
+    border-color: #F5CB5C;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}

@@ -1,14 +1,15 @@
 import { Fragment, useState } from 'react'
+import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { FunnelIcon } from '@heroicons/react/20/solid'
-import { IdeaTags, Ideas } from '@/pages/ideas/IdeaTypes'
+import { ProjectTags, Projects } from '@/pages/my-projects/ProjectTypes'
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function IdeaFilter({ ideas, tags } : { ideas : Ideas, tags: IdeaTags }) {
+export default function ProjectGrid({ projects, tags } : { projects : Projects, tags: ProjectTags }) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [currFilter, setCurrFilter] = useState<string>('');
 
@@ -67,7 +68,7 @@ export default function IdeaFilter({ ideas, tags } : { ideas : Ideas, tags: Idea
                 <form className="mt-4 border-t border-tspg-gray">
                   <h3 className="sr-only">Categories</h3>
                   <ul role="list" className="px-3 py-3 font-medium text-black">
-                    {tags?.allIdeaTags.map((tag) => (
+                    {tags?.allProjectTags.map((tag) => (
                       <li key={tag.name}>
                         <a href={tag.slug} id={tag.slug} onClick={handleClick}>
                           {tag.name}
@@ -83,7 +84,7 @@ export default function IdeaFilter({ ideas, tags } : { ideas : Ideas, tags: Idea
         </Dialog>
       </Transition.Root >
       <div className="">
-        <h1 className="sm:max-w-xs mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">Ideas</h1>
+        <h1 className="sm:max-w-xs mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">Projects</h1>
 
         <p className="w-full mb-4 text-base text-black md:text-lg inline-flex flex-1">These are some mostly-baked ideas that I've had rattling around in my head, and may or may not get to. You are free to take them and claim them as your own! If I end up making a version of them, I'll remove them from this site! But no worries if you made yours first -- mine will always be open source!</p>
         <div className="flex items-center">
@@ -108,7 +109,7 @@ export default function IdeaFilter({ ideas, tags } : { ideas : Ideas, tags: Idea
           <form className="hidden lg:block">
             <div role="list" className="pb-6 font-medium text-black items-center flex gap-4 items-middle mt-2">
               <FunnelIcon className="h-5 w-5 text-black" />
-              {tags?.allIdeaTags.map((tag) => (
+              {tags?.allProjectTags.map((tag) => (
                 <button key={tag.name} id={tag.slug} onClick={handleClick} className={classNames(
                   (currFilter == tag.slug) ? 'bg-tspg-yellow' : 'bg-tspg-white hover:bg-tspg-yellow',
                   'inline-flex w-auto text-lg text-tspg-gray'
@@ -124,16 +125,16 @@ export default function IdeaFilter({ ideas, tags } : { ideas : Ideas, tags: Idea
 
           {/* Product grid */}
           <div className="grid grid-cols-2 gap-x-3 gap-y-3">
-            {ideas?.allIdeas.map((idea) => (
+            {projects?.allProjects.map((project) => (
               <div className={classNames(
-                (idea.tags.map((tag) => (tag.slug)).includes(currFilter) || currFilter == '') ? 'visible' : 'hidden',
-                'flex flex-col flex-1 px-6 py-6 text-sm shadow-2xl rounded-md bg-tspg-white'
-              )} key={idea.title}>
-                <h1 className="text-2xl underline decoration-tspg-yellow decoration-4 mb-2">{idea.title}</h1>
+                (project.tags.map((tag) => (tag.slug)).includes(currFilter) || currFilter == '') ? 'visible' : 'hidden',
+                'px-6 py-6 text-sm shadow-2xl rounded-md bg-tspg-white'
+              )} key={project.title}>
+                <Link href={project.link} className="text-2xl underline decoration-tspg-yellow decoration-4 mb-2 hover:bg-tspg-yellow" target="_blank">{project.title}</Link>
 
-                <p className="mb-4 text-lg">{idea.description}</p>
+                <p className="mb-4 mt-4 text-lg">{project.description}</p>
                 <div className="mt-auto">
-                  {idea.tags.map((tag) =>  (
+                  {project.tags.map((tag) =>  (
                     <span className="inline-block bg-tspg-yellow px-3 py-1 mt-2 text-md font-medium text-black mr-2 mb-2" key={tag.slug}>#{tag.slug}</span>
                   ))}
                 </div>

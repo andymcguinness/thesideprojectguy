@@ -1,15 +1,15 @@
-import { request } from '@/lib/datocms';
-
-import Navbar from '../../components/Navbar'
-import IdeaFilter from '../../components/IdeaFilter'
-import { IdeaTags, Ideas } from './IdeaTypes';
+import { request } from "@/lib/datocms";
+import ProjectGrid from "@/components/ProjectGrid";
+import Navbar from "../../components/Navbar";
+import { ProjectTags, Projects } from "./ProjectTypes";
 
 export async function getStaticProps({ preview = false }) {
   // Query
-  const IDEAS_QUERY = `query MyQuery {
-    allIdeas(orderBy: title_ASC) {
+  const PROJECTS_QUERY = `query MyQuery {
+    allProjects(orderBy: title_ASC) {
       title
       description
+      link
       tags {
         name
         slug
@@ -18,15 +18,15 @@ export async function getStaticProps({ preview = false }) {
   }`;
 
   // Request
-  const ideas = (await request({
-    "query": IDEAS_QUERY,
+  const projects = (await request({
+    "query": PROJECTS_QUERY,
     "variables": { "limit": 10 }
   })) || [];
 
   const TAGS_QUERY = `query MyQuery {
-    allIdeaTags(orderBy: name_ASC) {
-      slug
+    allProjectTags(orderBy: name_ASC) {
       name
+      slug
       id
     }
   }`;
@@ -38,17 +38,16 @@ export async function getStaticProps({ preview = false }) {
 
   // Return
   return {
-    props: { ideas, tags },
+    props: { projects, tags },
   }
 }
 
-export default function Ideas({ ideas, tags } : { ideas : Ideas, tags : IdeaTags }) {
-
+export default function MyProjects({ projects, tags } : { projects : Projects, tags : ProjectTags }) {
   return (
     <div className="bg-tspg-white min-h-screen">
       <Navbar />
       <main className="pt-10 flex bg-tspg-white pb-5 h-full grid xl:grid-cols-5">
-        <IdeaFilter ideas={ideas} tags={tags} />
+        <ProjectGrid projects={projects} tags={tags} />
       </main>
     </div>
   )

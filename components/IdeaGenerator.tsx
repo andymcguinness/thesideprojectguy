@@ -1,10 +1,6 @@
-import { Fragment, useEffect, useState } from 'react'
-import { Dialog, Disclosure, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
-import Navbar from './Navbar'
+import { useState } from 'react'
+import Image from 'next/image';
 import { generateSlug } from 'random-word-slugs'
-import Link from 'next/link'
 
 
 const product_types = [
@@ -105,16 +101,19 @@ export default function IdeaGenerator() {
   }
 
   return (
-    <section className="p-6 bg-[#333533] dark:text-gray-100">
-      <div className="container grid gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-5">
-        <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 dark:bg-gray-900 bg-[#ECEDEB]">
-          <h1 className="mb-6 font-sans text-5xl font-bold tracking-tight text-tspg-gray sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-block z-10 text-left">Ideas Generator</h1>
-
-          <p className="text-base text-tspg-gray md:text-lg text-sm text-left mb-6">{result == '' && loading == true ? 'Loading...' : (result != '' ? result : '')}</p>
-
-          <button onClick={generateWords} className="inline-block items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-tspg-gray transition duration-200 shadow-sm bg-tspg-yellow hover:brightness-90 focus:shadow-outline focus:outline-none rounded-md mt-2" disabled={loading}>{result == '' ? 'Generate an idea' : 'Generate another idea'}</button>
+    <section className="p-6 pt-10 bg-tspg-gray pb-20">
+      <div className="container grid gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-6">
+        <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 xl:col-start-2 bg-tspg-white">
+          <h1 className="sm:max-w-xs font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">Idea Generator</h1>
+          <p className="my-8 text-left text-black">
+            If you need a side project idea, click the button below! It's AI-powered, and will take a moment, but maybe it will spark an idea for you!
+          </p>
+          <button onClick={generateWords} className="inline-block items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-black transition duration-200 shadow-sm bg-tspg-yellow hover:brightness-90 focus:shadow-outline focus:outline-none rounded-md mt-2" disabled={loading}>{result == '' ? 'Generate an idea' : 'Generate another idea'}</button>
+          <p className="text-base text-black md:text-lg text-sm text-left mt-6">{result == '' && loading == true ? 'Loading...' : (result != '' ? result : '')}</p>
         </div>
-        <img src="/idea_generator.jpg" alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" />
+        <div className="relative w-full rounded-md xl:col-span-2">
+          <Image src="/idea_generator_page.jpg" height={608} width={912} className="object-cover w-full rounded-md xl:col-span-3" alt={""} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=" />
+        </div>
       </div>
     </section>
   )

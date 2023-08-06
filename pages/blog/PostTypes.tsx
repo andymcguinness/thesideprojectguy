@@ -18,7 +18,7 @@ export interface Post {
     };
     "image": {
         "url": string;
-        'blurHash': string;
+        'blurUpThumb': string;
     };
     "subtitle": string;
     "tags": [ Tag ];
@@ -30,7 +30,7 @@ export interface Author {
     "name": string;
     "image": {
         "url": string;
-        "blurHash": string;
+        "blurUpThumb": string;
     };
     "excerpt": {
         "value": StructuredTextDocument
