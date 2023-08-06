@@ -1,14 +1,23 @@
-import React from 'react';
-import { useForm, ValidationError } from '@formspree/react';
-import Image from 'next/image';
-import Navbar from '@/components/Navbar';
+// React
+import React from "react";
 
+// Next.js
+import Image from "next/image";
+
+// Formspree
+import { useForm, ValidationError } from "@formspree/react";
+
+// Components
+import Navbar from "@/components/Navbar";
 
 export default function ContactForm() {
+
   const [state, handleSubmit] = useForm("myyqkrkn");
+  
   if (state.succeeded) {
-    return <p>Thanks for your message! I'll get back to you as soon as I can.</p>;
+    return <p>Thanks for your message! I&apos;ll get back to you as soon as I can.</p>;
   }
+  
   return (
     <div className="min-h-screen bg-tspg-gray">
       <Navbar />
@@ -43,7 +52,7 @@ export default function ContactForm() {
                 id="message"
                 name="message"
                 placeholder="Your message here"
-                className='w-full rounded-md focus:ring focus:ring-tspg-yellow'
+                className="w-full rounded-md focus:ring focus:ring-tspg-yellow"
               />
               <ValidationError
                 prefix="Message"

@@ -1,7 +1,59 @@
+// DatoCMS Integration
 import { request } from "@/lib/datocms";
-import Navbar from "../../components/Navbar"
-import ExcerptComponent from "../../components/ExcerptComponent";
-import { Post, Posts } from "./PostTypes";
+import { StructuredTextDocument } from "react-datocms"
+
+// Components
+import Navbar from "@/components/Navbar"
+import ExcerptComponent from "@/components/ExcerptComponent";
+
+// Types
+export interface Posts {
+  "allPosts": [
+    Post
+  ];
+}
+
+export interface Post {
+  "author": Author;
+  "body": {
+    "value": StructuredTextDocument
+  };
+  "categories": [Category];
+  "excerpt": {
+    "value": StructuredTextDocument
+  };
+  "image": {
+    "url": string;
+    "blurUpThumb": string;
+  };
+  "subtitle": string;
+  "tags": [Tag];
+  "title": string;
+  "slug": string;
+}
+
+export interface Author {
+  "name": string;
+  "image": {
+    "url": string;
+    "blurUpThumb": string;
+  };
+  "excerpt": {
+    "value": StructuredTextDocument
+  };
+}
+
+export interface Category {
+  "name": string;
+  "slug": string;
+  "id": number;
+}
+
+export interface Tag {
+  "name": string;
+  "slug": string;
+  "id": number;
+}
 
 export async function getStaticProps({ preview = false }) {
   // Query

@@ -1,10 +1,9 @@
-import { Inter } from 'next/font/google'
-import { Hero } from '../components/Hero'
-import Navbar from '../components/Navbar'
-import { IdeasSection } from '@/components/IdeasSection'
-import { YouTubeSection } from '@/components/YouTubeSection'
 
-const inter = Inter({ subsets: ['latin'] })
+// Components
+import { Hero } from "@/components/Hero"
+import Navbar from "@/components/Navbar"
+import { IdeasSection } from "@/components/IdeasSection"
+import { YouTubeSection } from "@/components/YouTubeSection"
 
 export default function Home() {
   return (

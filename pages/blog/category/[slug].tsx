@@ -1,9 +1,12 @@
-import { request } from '@/lib/datocms';
+// DatoCMS Integration
+import { request } from "@/lib/datocms";
 
-import Navbar from '@/components/Navbar';
+// Components
+import Navbar from "@/components/Navbar";
+import ExcerptComponent from "@/components/ExcerptComponent";
 
-import { Category, Posts } from '../PostTypes';
-import ExcerptComponent from '../../../components/ExcerptComponent';
+// Types
+import { Category, Posts } from "@/pages/blog/index";
 
 export async function getStaticPaths() {
   // Query
@@ -104,11 +107,11 @@ export default function PostPage({ posts, category } : { posts : Posts, category
     <main className="flex bg-tspg-white pb-5 h-full w-full grid xl:grid-cols-5">
       <div className="bg-tspg-white px-4 py-10 w-full mx-auto xl:col-span-3 xl:col-start-2">
         <h1 className="sm:max-w-xs mb-6 font-sans text-5xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none bg-tspg-yellow w-auto inline-flex">Blog</h1>
-        <h2 className="text-2xl">Category: {category.name}</h2>
+        <h2 className="text-2xl">Category: {category?.name}</h2>
 
-        {posts.allPosts?.map((post, index) => {
+        {posts?.allPosts?.map((post, index) => {
             return (
-              <div key={post.title} className="block">
+              <div key={post?.title} className="block">
                 <ExcerptComponent key={index} post={post} />
               </div>
             )

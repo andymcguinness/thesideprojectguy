@@ -1,7 +1,35 @@
+// DatoCMS Integration
 import { request } from "@/lib/datocms";
+
+// Components
 import ProjectGrid from "@/components/ProjectGrid";
-import Navbar from "../../components/Navbar";
-import { ProjectTags, Projects } from "./ProjectTypes";
+import Navbar from "@/components/Navbar";
+
+// Types
+export interface Projects {
+  "allProjects": [
+    Project
+  ];
+}
+
+export interface Project {
+  "title": string;
+  "description": string;
+  "tags": [ProjectTag];
+  "link": string;
+}
+
+export interface ProjectTags {
+  "allProjectTags": [
+    ProjectTag
+  ];
+}
+
+export interface ProjectTag {
+  "name": string;
+  "slug": string;
+  "id": number;
+}
 
 export async function getStaticProps({ preview = false }) {
   // Query

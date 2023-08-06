@@ -1,8 +1,34 @@
-import { request } from '@/lib/datocms';
+// DatoCMS Integration
+import { request } from "@/lib/datocms"
 
-import Navbar from '../../components/Navbar'
-import IdeaFilter from '../../components/IdeaFilter'
-import { IdeaTags, Ideas } from './IdeaTypes';
+// Components
+import Navbar from "@/components/Navbar"
+import IdeaFilter from "@/components/IdeaFilter"
+
+// Types
+export interface Ideas {
+  "allIdeas": [
+    Idea
+  ];
+}
+
+export interface Idea {
+  "title": string;
+  "description": string;
+  "tags": [IdeaTag];
+}
+
+export interface IdeaTags {
+  "allIdeaTags": [
+    IdeaTag
+  ];
+}
+
+export interface IdeaTag {
+  "name": string;
+  "slug": string;
+  "id": number;
+}
 
 export async function getStaticProps({ preview = false }) {
   // Query

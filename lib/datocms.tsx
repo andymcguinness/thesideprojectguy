@@ -1,7 +1,8 @@
-import { GraphQLClient } from 'graphql-request'
+// GraphQL
+import { GraphQLClient } from "graphql-request"
 
 export function request({ query, variables } : { query: any, variables: any}) : Promise<any> {
-  const endpoint = 'https://graphql.datocms.com/'
+  const endpoint = "https://graphql.datocms.com/"
 
   const client = new GraphQLClient(endpoint, {
     headers: {

@@ -1,3 +1,4 @@
+// Next.js
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,10 +13,10 @@ export const Hero = () => {
             Hiya!
             <br />
             <br />
-            My name is <Link className="text-lg font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4" href="/about">Andy</Link>, and I'm the side project guy!
+            My name is <Link className="text-lg font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4" href="/about">Andy</Link>, and I&apos;m the side project guy!
             <br />
             <br />
-            I'm on a mission to help others have meaningful, fulfilling side projects -- so I have filled this site with resources, tips, tricks, and examples to help you along that journey!
+            I&apos;m on a mission to help others have meaningful, fulfilling side projects -- so I have filled this site with resources, tips, tricks, and examples to help you along that journey!
           </p>
         </div>
         <div className="relative  w-full rounded-md xl:col-span-2">
