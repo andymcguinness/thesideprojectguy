@@ -2,18 +2,10 @@ import React from 'react';
 
 import { request } from "@/lib/datocms";
 
-import { globby } from 'globby';
 import unixify from 'unixify';
 
-async function createSitemap (posts, tags, categories) {
-    const pages = await globby([
-        'pages/*.js',
-        'data/**/*.mdx',
-        '!data/*.mdx',
-        '!pages/_*.js',
-        '!pages/api',
-        '!pages/404.js',
-    ]);
+const createSitemap = (posts, tags, categories, pages) => {
+    
 
     `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -55,7 +47,7 @@ async function createSitemap (posts, tags, categories) {
                         .replace('data', '')
                         .replace('.js', '')
                         .replace('.mdx', '');
-                      const route = path === '/index' ? '' : unixify(path);
+                      const route = path === '/index' ? '' : path;
            
                       return `
                         <url>
@@ -136,9 +128,18 @@ class Sitemap extends React.Component {
     "query": CATS_QUERY,
     "variables": { "limit": 10 }
   });
+
+  const pages = await unixify([
+    'pages/*.js',
+    'data/**/*.mdx',
+    '!data/*.mdx',
+    '!pages/_*.js',
+    '!pages/api',
+    '!pages/404.js',
+]);
  
     res.setHeader('Content-Type', 'text/xml');
-    res.write(createSitemap(posts, tags, categories));
+    res.write(createSitemap(posts, tags, categories, pages));
     res.end();
   }
 }
