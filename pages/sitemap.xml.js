@@ -18,7 +18,7 @@ const createSitemap = (posts, tags, categories) => `<?xml version="1.0" encoding
             .map(({ slug }) => {
               return `
                   <url>
-                      <loc>${`https://thesideprojectguy.com/blog/${slug}`}</loc>
+                      <loc>${`https://thesideprojectguy.com/blog/tag/${slug}`}</loc>
                   </url>
               `;
             })
@@ -28,7 +28,7 @@ const createSitemap = (posts, tags, categories) => `<?xml version="1.0" encoding
                 .map(({ slug }) => {
                   return `
                       <url>
-                          <loc>${`https://thesideprojectguy.com/blog/${slug}`}</loc>
+                          <loc>${`https://thesideprojectguy.com/blog/category/${slug}`}</loc>
                       </url>
                   `;
                 })
