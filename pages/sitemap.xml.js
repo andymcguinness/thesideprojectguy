@@ -2,8 +2,22 @@ import React from 'react';
 
 import { request } from "@/lib/datocms";
 
-const createSitemap = (posts, tags, categories) => `<?xml version="1.0" encoding="UTF-8"?>
+import { globby } from 'globby';
+import unixify from 'unixify';
+
+async function createSitemap (posts, tags, categories) {
+    const pages = await globby([
+        'pages/*.js',
+        'data/**/*.mdx',
+        '!data/*.mdx',
+        '!pages/_*.js',
+        '!pages/api',
+        '!pages/404.js',
+    ]);
+
+    `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
         ${posts.allPosts
           .map(({ slug }) => {
             return `
@@ -33,8 +47,25 @@ const createSitemap = (posts, tags, categories) => `<?xml version="1.0" encoding
                   `;
                 })
                 .join('')}
+
+                ${pages
+                    .map((page) => {
+                      const path = page
+                        .replace('pages', '')
+                        .replace('data', '')
+                        .replace('.js', '')
+                        .replace('.mdx', '');
+                      const route = path === '/index' ? '' : unixify(path);
+           
+                      return `
+                        <url>
+                            <loc>${`https://thesideprojectguy${route}`}</loc>
+                        </url>
+                      `;
+                    })
+                    .join('')}
     </urlset>
-    `;
+    `};
  
 class Sitemap extends React.Component {
   static async getInitialProps({ res }) {
