@@ -1,8 +1,10 @@
 import { writeFileSync } from 'fs';
 import { globby } from 'globby';
 import prettier from 'prettier';
-import { request } from '@/lib/datocms'
- 
+import { GraphQLClient } from "graphql-request"
+
+  
+  
 async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
@@ -47,8 +49,16 @@ async function generate() {
     }
   }`;
 
+  const endpoint = "https://graphql.datocms.com/"
+
+  const client = new GraphQLClient(endpoint, {
+    headers: {
+      authorization: `Bearer ${process.env.DATOCMS_API_KEY}`,
+    },
+  });
+
   // Request
-  const posts = await request({
+  const posts = await client({
     "query": POSTS_QUERY,
     "variables": { "limit": 10 }
   });
@@ -62,7 +72,7 @@ async function generate() {
   }`;
 
   // Request
-  const tags = await request({
+  const tags = await client({
     "query": TAGS_QUERY,
     "variables": { "limit": 10 }
   });
@@ -76,7 +86,7 @@ async function generate() {
   }`;
 
   // Request
-  const categories = await request({
+  const categories = await client({
     "query": CATS_QUERY,
     "variables": { "limit": 10 }
   });
