@@ -8,7 +8,7 @@ import { GraphQLClient } from "graphql-request"
 async function generate() {
     const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
     const pages = await globby([
-        'pages/*.js',
+        'pages/**/*.js',
         'data/**/*.mdx',
         '!data/*.mdx',
         '!pages/_*.js',
