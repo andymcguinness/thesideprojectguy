@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 import { globby } from 'globby';
 import prettier from 'prettier';
-import { request } from '../lib/datocms'
+import { request } from '@/lib/datocms'
  
 async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
