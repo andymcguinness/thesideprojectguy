@@ -58,10 +58,7 @@ async function generate() {
   });
 
   // Request
-  const posts = await client.request({
-    "query": POSTS_QUERY,
-    "variables": { "limit": 10 }
-  });
+  const posts = await client.request(POSTS_QUERY, { "limit": 10 });
 
   // Query
   const TAGS_QUERY = `query MyQuery {
@@ -72,10 +69,7 @@ async function generate() {
   }`;
 
   // Request
-  const tags = await client.request({
-    "query": TAGS_QUERY,
-    "variables": { "limit": 10 }
-  });
+  const tags = await client.request(TAGS_QUERY, { "limit": 10 });
 
   // Query
   const CATS_QUERY = `query MyQuery {
@@ -86,10 +80,7 @@ async function generate() {
   }`;
 
   // Request
-  const categories = await client.request({
-    "query": CATS_QUERY,
-    "variables": { "limit": 10 }
-  });
+  const categories = await client.request(CATS_QUERY,{ "limit": 10 });
  
   const sitemap = `
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
