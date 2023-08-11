@@ -58,7 +58,7 @@ async function generate() {
   });
 
   // Request
-  const posts = await client({
+  const posts = await client.request({
     "query": POSTS_QUERY,
     "variables": { "limit": 10 }
   });
@@ -72,7 +72,7 @@ async function generate() {
   }`;
 
   // Request
-  const tags = await client({
+  const tags = await client.request({
     "query": TAGS_QUERY,
     "variables": { "limit": 10 }
   });
@@ -86,7 +86,7 @@ async function generate() {
   }`;
 
   // Request
-  const categories = await client({
+  const categories = await client.request({
     "query": CATS_QUERY,
     "variables": { "limit": 10 }
   });
