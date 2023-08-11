@@ -14,6 +14,7 @@ async function generate() {
         '!pages/_*.tsx',
         '!pages/api',
         '!pages/404.tsx',
+        '!pages/**/[slug].tsx'
     ]);
 
     const POSTS_QUERY = `query MyQuery {
@@ -91,7 +92,7 @@ async function generate() {
                     .replace('data', '')
                     .replace('.tsx', '')
                     .replace('.mdx', '');
-                const route = path === '/index' ? '' : path;
+                const route = path.indexOf('/index') > 0 ? path.split('/index')[0] : path;
 
                 return `
               <url>
