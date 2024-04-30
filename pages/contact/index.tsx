@@ -15,7 +15,26 @@ export default function ContactForm() {
   const [state, handleSubmit] = useForm("myyqkrkn");
   
   if (state.succeeded) {
-    return <p>Thanks for your message! I&apos;ll get back to you as soon as I can.</p>;
+    return (
+      <div className="min-h-screen bg-tspg-gray">
+      <Navbar />
+      <section className="p-6 pt-10 bg-tspg-gray pb-20">
+        <div className="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-6">
+          <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 xl:col-start-2 bg-tspg-white">
+            <h1 className="text-4xl font-extrabold text-left text-tspg-gray">the side project guy</h1>
+            <span className="block mb-2 text-md text-left text-tspg-gray">ALWAYS BUILDING</span>
+            <p className="my-8 text-left text-tspg-gray">
+              Thanks for your message! I'll get back to you as soon as I can.
+            </p>
+          </div>
+          <div className="relative  w-full rounded-md xl:col-span-2">
+            <Image src="/contact_page.jpg" fill={true} className="object-cover rounded-md
+          " alt={""} placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=" />
+          </div>
+        </div>
+      </section>
+    </div>
+    );
   }
   
   return (
