@@ -24,7 +24,7 @@ export default function ContactForm() {
             <h1 className="text-4xl font-extrabold text-left text-tspg-gray">the side project guy</h1>
             <span className="block mb-2 text-md text-left text-tspg-gray">ALWAYS BUILDING</span>
             <p className="my-8 text-left text-tspg-gray">
-              Thanks for your message! I'll get back to you as soon as I can.
+              Thanks for your message! I&apos;ll get back to you as soon as I can.
             </p>
           </div>
           <div className="relative  w-full rounded-md xl:col-span-2">
