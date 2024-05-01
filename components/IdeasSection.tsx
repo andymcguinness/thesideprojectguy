@@ -17,9 +17,6 @@ export const IdeasSection = () => {
             <br />
             <br />
             I also have a <Link href="/blog" className="text-lg font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4">Blog</Link> where I give tips and tricks on finding great, fulfilling side project ideas.
-            <br />
-            <br />
-            Finally, you can always <Link href="/contact" className="text-lg font-semibold tracking-wider text-black hover:underline decoration-tspg-yellow decoration-4">reach out to me directly</Link> -- I&apos;ll do my best to help you out!
           </p>
         </div>
       </div>
